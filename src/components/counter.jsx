@@ -1,29 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
 
 const Counter = (props) => {
-  const [value, setValue] = useState(props.value);
-
-  const formatCount = () => (value === 0 ? "Zero" : value);
+  const formatCount = () =>
+    props.counter.value === 0 ? "Zero" : props.counter.value;
   let classes = "badge m-2 badge-";
-  classes += value === 0 ? "warning" : "primary";
-
-  const handleIncrement = (incrementBy) => {
-    setValue(value + incrementBy);
-  };
+  classes += props.counter.value === 0 ? "warning" : "primary";
 
   return (
-    <>
+    <div>
       <span className={classes}>{formatCount()}</span>
-      <button onClick={() => handleIncrement(10)} className="btn btn-secondary">
+      <button
+        onClick={() => props.onIncrement(props.counter)}
+        className="btn btn-secondary"
+      >
         +
       </button>
       <button
-        onClick={() => props.onDelete(props.id)}
+        onClick={() => props.onDelete(props.counter.id)}
         className="btn btn-sm btn-danger m-2"
       >
         Delete
       </button>
-    </>
+    </div>
   );
 };
 
