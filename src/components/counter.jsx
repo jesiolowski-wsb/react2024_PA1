@@ -1,20 +1,21 @@
 import React, { useState } from "react";
 
 const Counter = (props) => {
-  console.log("props", props);
+  const [value, setValue] = useState(props.value);
 
-  const [count, setCount] = useState(0);
+  console.log("props:", props);
 
-  const formatCount = () => (count === 0 ? "Zero" : count);
+  const formatCount = () => (value === 0 ? "Zero" : value);
   let classes = "badge m-2 badge-";
-  classes += count === 0 ? "warning" : "primary";
+  classes += value === 0 ? "warning" : "primary";
 
   const handleIncrement = (incrementBy) => {
-    setCount(count + incrementBy);
+    setValue(value + incrementBy);
   };
 
   return (
     <>
+      {props.children}
       <span className={classes}>{formatCount()}</span>
       <button onClick={() => handleIncrement(10)} className="btn btn-secondary">
         increment
