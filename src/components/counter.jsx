@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Counter() {
+const Counter = () => {
   const [count, setCount] = useState(0);
 
   const formatCount = () => (count === 0 ? "Zero" : count);
@@ -19,6 +19,6 @@ function Counter() {
       </button>
     </>
   );
-}
+};
 
 export default Counter;
